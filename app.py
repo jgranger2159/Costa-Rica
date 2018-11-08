@@ -1,7 +1,13 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import scrape_costa
-from dev_config import mongo_uri, flask_debug
+import os
+
+if os.environ.get('MONGODB_URI'):
+    mongo_uri = os.environ.get('MONGODB_URI')
+    flask_debug = False
+else:
+    from dev_config import mongo_uri, flask_debug
 
 # Create an instance of Flask
 app = Flask(__name__)
