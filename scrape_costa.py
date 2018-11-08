@@ -1,12 +1,12 @@
 from bs4 import BeautifulSoup as bs
 import time
 import re
+import requests
 
 def scrape_info():
     # Visit visitcostarica.herokuapp.com
-    html = "https://visitcostarica.herokuapp.com/"
-
-    time.sleep(1)
+    url = "https://visitcostarica.herokuapp.com/"
+    html = requests.get(url).text
 
     # Scrape page into Soup
     soup = bs(html, "html.parser")
